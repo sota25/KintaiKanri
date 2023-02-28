@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+   <link th:href="@{/css/home.css}" rel="stylesheet"></link>
+    <title>Home</title>
+</head>
+<body class="text-center main">
+   <div th:fragment="home_contents" >
+     <!--ヘッダー（ナビゲーションバー）-->
+     <h1 th:text="${year}+年+${month}+月+${day}+日+'&#40;'+${dayOfWeek}+'&#41;'"></h1>    
+     <br/>
+     <h1 th:text="現在契約中の会社：+${officeName}"></h1>    
+     <br/>  
+     <a th:href="@{'/workTime'}" class="btn btn-primary">今日の勤務表登録</a>
+     <a th:href="@{'/contracts'}" class="btn btn-primary">過去の勤務時間詳細・変更</a>
+      
+   </div>
+</body>
+</html>
