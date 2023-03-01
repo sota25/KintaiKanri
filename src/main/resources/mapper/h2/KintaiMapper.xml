@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.KintaiMapper">
+	<resultMap type="com.example.demo.entity.Users" id="users">
+	</resultMap>
+
+	<!-- ユーザー1件登録 -->
+	<insert id="insertOne">
+		insert into users(
+		user_name
+		,email
+		,password
+		,role
+		,user_status
+		,requested_at
+		)
+		values (
+		#{userName}
+		, #{email}
+		, #{password}
+		, #{role}
+		, #{userStatus}
+		, #{requestedAt}
+		)
+	</insert>
+
+	
+</mapper>
