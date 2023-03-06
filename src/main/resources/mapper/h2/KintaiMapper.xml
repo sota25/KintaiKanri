@@ -21,11 +21,16 @@
 		#{userName}
 		, #{email}
 		, #{password}
-		, #{role}
+		,
+		#{role}
 		, #{userStatus}
 		, #{requestedAt}
 		)
 	</insert>
 
-	
+	<!-- ログインユーザー取得 -->
+	<select id="findLoginUser" resultMap="users">
+		SELECT email,password,role,user_status FROM users WHERE email=#{email}
+	</select>
+
 </mapper>

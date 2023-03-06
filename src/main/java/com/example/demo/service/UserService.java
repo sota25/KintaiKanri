@@ -14,5 +14,13 @@ public interface UserService {
 	 * @return ユーザー登録処理Mapper
 	 */
 	public int insertUser(Users users);
+	
+	/**
+	 * ログインユーザー取得(1件)
+	 * 
+	 * @param email ログインメールアドレス
+	 * @return ログインユーザー取得Mapper(1件)
+	 */
+	public Users findLoginUser(String email);
 
 }
