@@ -21,11 +21,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int insertUser(Users users) {
 
-		users.setRole(KintaiConstants.ROLE_GENERAL_NUM);
-		users.setUserStatus(KintaiConstants.ROLE_GENERAL_NUM);
+		users.setRole(KintaiConstants.ROLE_GENERAL_NUM);// roleの登録値は1(一般ユーザー)で固定
+		users.setUserStatus(KintaiConstants.ROLE_GENERAL_NUM);// userStatusの登録値は0(未承認)で固定
 		users.setRequestedAt(dateToSecond());
 
 		return kintaiMapper.insertOne(users);
+	}
+
+	@Override
+	public Users findLoginUser(String email) {
+		// TODO 自動生成されたメソッド・スタブ
+		return kintaiMapper.findLoginUser(email);
 	}
 
 	/**
@@ -41,4 +47,5 @@ public class UserServiceImpl implements UserService {
 		return requestedAt;
 
 	}
+
 }

@@ -1,0 +1,19 @@
+body{
+    padding-top:50px;
+}
+
+.main{
+    padding-top: 50px;
+    /* position: fixed; */
+    text-align: center;
+    /* display: block; */
+    /* width: 80%;
+    margin: 0 auto; */
+    top: 0px;
+    bottom: 0;
+}
+
+.page-header{
+    margin-top: 0px;
+}
+

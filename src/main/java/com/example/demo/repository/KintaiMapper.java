@@ -14,4 +14,10 @@ public interface KintaiMapper {
 	 */
 	public int insertOne(Users users);
 
+	/**
+	 * ログインユーザー取得Mapper(1件)
+	 * 
+	 * @param email ログインメールアドレス
+	 */
+	public Users findLoginUser(String email);
 }
