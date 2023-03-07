@@ -1,5 +1,8 @@
 package com.example.demo.common;
 
+/**
+ * 定数クラス
+ */
 public class KintaiConstants {
 
 	/*******
@@ -9,11 +12,17 @@ public class KintaiConstants {
 	/** ログインページ */
 	public static final String LOGIN_URL = "/login";
 
+	/** ログアウトページ */
+	public static final String LOGOUT_URL = "/logout";
+
 	/** ユーザー新規登録ページ */
 	public static final String SIGNUP_URL = "/signup";
 
 	/** ユーザー登録完了ページ */
 	public static final String SIGNUP_COMPLETION_URL = "/signup/completion";
+
+	/** 契約登録画面ページ */
+	public static final String CONTRACT_URL = "/contract";
 
 	/** ホーム画面ページ */
 	public static final String HOME_URL = "/home";
@@ -31,6 +40,9 @@ public class KintaiConstants {
 	/** ユーザー新規登録ページのパス */
 	public static final String SIGNUP_PASS = "user/signup";
 
+	/** 契約登録ページのパス */
+	public static final String ADD_CONTRACT_PASS = "contract/contract";
+
 	/** ユーザー登録完了ページのパス */
 	public static final String SIGNUP_COMPLETION_PASS = "user/completion";
 
@@ -46,6 +58,9 @@ public class KintaiConstants {
 
 	/** 登録完了画面のリダイレクト */
 	public static final String REDIRECT_COMPLETION = "redirect:/signup/completion";
+
+	/** ホーム画面のリダイレクト */
+	public static final String REDIRECT_HOME = "redirect:/home";
 
 	/**************
 	 * データ固定値 *
@@ -91,6 +106,9 @@ public class KintaiConstants {
 	/** 曜日キー */
 	public static final String MODEL_KEY_DAY_OF_WEEK = "dayOfWeek";
 
+	/** 年キー */
+	public static final String MODEL_KEY_OFFICE_NAME = "officeName";
+
 	/*****************
 	 * モデルバリュー値 *
 	 *****************/
@@ -116,6 +134,9 @@ public class KintaiConstants {
 
 	/** パスワードパラメータ */
 	public static final String PASSWORD_PARAM = "password";
+
+	/** ログアウト成功 */
+	public static final String LOGOUT_SUCCESS_URL = "/login?logout";
 
 	/******************
 	 * エラーメッセージ *

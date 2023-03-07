@@ -8,18 +8,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.demo.common.KintaiConstants;
-import com.example.demo.service.impl.UserDetailsServiceImpl;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsServiceImpl userDetailsServiceImpl;
+	private UserDetailsService userDetailsService;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -40,15 +41,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.formLogin().loginProcessingUrl(KintaiConstants.LOGIN_URL)
 				.usernameParameter(KintaiConstants.USER_NAME_PARAM).passwordParameter(KintaiConstants.PASSWORD_PARAM)
-				.defaultSuccessUrl(KintaiConstants.HOME_URL, true).loginPage(KintaiConstants.LOGIN_URL)
+				.defaultSuccessUrl(KintaiConstants.CONTRACT_URL, true).loginPage(KintaiConstants.LOGIN_URL)
 				.failureUrl(KintaiConstants.LOGIN_URL.concat(KintaiConstants.ERROR_URL));
+
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher(KintaiConstants.LOGOUT_URL))
+				.logoutUrl(KintaiConstants.LOGOUT_URL).logoutSuccessUrl(KintaiConstants.LOGOUT_SUCCESS_URL);
 
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
 }
