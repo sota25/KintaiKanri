@@ -10,6 +10,9 @@ import lombok.Data;
 @Data
 public class Users {
 
+	/** usersテーブルID */
+	private int userId;
+
 	/** ユーザーネーム */
 	private String userName;
 

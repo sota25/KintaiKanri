@@ -8,17 +8,17 @@ CREATE TABLE IF NOT EXISTS users (
     requested_at VARCHAR(19)
 );
 
--- CREATE TABLE IF NOT EXISTS contracts (
---     contract_id INT auto_increment PRIMARY KEY,
---     user_id INT,
---     contract_time INT, 
---     start_time TIME,
---     break_time TIME,
---     end_time TIME,
---     start_date DATE,
---     office_name VARCHAR(100),
---     end_date DATE
--- );
+CREATE TABLE IF NOT EXISTS contracts (
+    contract_id INT auto_increment PRIMARY KEY,
+    user_id INT,
+    contract_time INT, 
+    start_time TIME,
+    break_time TIME,
+    end_time TIME,
+    start_date DATE,
+    office_name VARCHAR(100),
+    end_date DATE
+);
 
 -- CREATE TABLE IF NOT EXISTS m_month (
 --     month_id INT auto_increment PRIMARY KEY,

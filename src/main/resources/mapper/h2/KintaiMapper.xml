@@ -4,11 +4,12 @@
 
 
 <mapper namespace="com.example.demo.repository.KintaiMapper">
-	<resultMap type="com.example.demo.entity.Users" id="users">
-	</resultMap>
+	<resultMap type="com.example.demo.entity.Users" id="users"></resultMap>
+	<resultMap type="com.example.demo.entity.Contracts"
+		id="contracts"></resultMap>
 
 	<!-- ユーザー1件登録 -->
-	<insert id="insertOne">
+	<insert id="insertUser">
 		insert into users(
 		user_name
 		,email
@@ -30,7 +31,26 @@
 
 	<!-- ログインユーザー取得 -->
 	<select id="findLoginUser" resultMap="users">
-		SELECT email,password,role,user_status FROM users WHERE email=#{email}
+		SELECT
+		user_id,email,password,role,user_status FROM users WHERE
+		email=#{email}
+	</select>
+
+	<!-- 契約1件登録 -->
+	<insert id="insertCont">
+		INSERT INTO
+		contracts(user_id,contract_time,start_time,break_time,end_time,start_date,office_name,end_date)
+		VALUES(#{userId},#{contractTime},#{startTime},#{breakTime},#{endTime},#{startDate},#{officeName},#{endDate}
+		)
+	</insert>
+
+	<select id="findCurrentCont" resultMap="contracts">
+		SELECT * FROM contracts
+		JOIN users ON
+		contracts.user_id=users.user_id
+		ORDER BY contract_id
+		DESC
+		LIMIT 1 OFFSET 0
 	</select>
 
 </mapper>
