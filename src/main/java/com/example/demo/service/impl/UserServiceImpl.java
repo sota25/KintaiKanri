@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Users findLoginUser(String email) {
-		// TODO 自動生成されたメソッド・スタブ
+
 		return kintaiMapper.findLoginUser(email);
 	}
 

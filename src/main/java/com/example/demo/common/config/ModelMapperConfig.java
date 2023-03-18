@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * ModelMapperのBean登録用クラス
+ * 
+ * @author S.TAKASUGI
  */
 @Configuration
 public class ModelMapperConfig {

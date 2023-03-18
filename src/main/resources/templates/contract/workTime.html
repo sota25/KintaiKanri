@@ -15,7 +15,7 @@
             <div class="page-header">
                 <h1>勤務時間登録</h1>
             </div>
-            <form method="post" th:action="@{/workTime}" th:object="${workTimeForm}">
+            <form method="post" th:action="@{/workTime/{contractId}(contractId=${contractId})}" th:object="${workTimeForm}">
                 <table class="table table-bordered table-hover">
                      <tr>
                         <th class="active col-sm-3">勤務日</th>

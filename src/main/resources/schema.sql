@@ -20,18 +20,18 @@ CREATE TABLE IF NOT EXISTS contracts (
     end_date DATE
 );
 
--- CREATE TABLE IF NOT EXISTS m_month (
---     month_id INT auto_increment PRIMARY KEY,
---     contract_id INT,
---     years INT,
---     months INT
--- );
+CREATE TABLE IF NOT EXISTS months (
+    month_id INT auto_increment PRIMARY KEY,
+    contract_id INT,
+    year INT,
+    month INT
+);
 
--- CREATE TABLE IF NOT EXISTS work_time (
---     work_time_id INT auto_increment PRIMARY KEY,
---     month_id INT,
---     work_day DATE,
---     start_time TIME,
---     break_time TIME,
---     end_time TIME
--- );
+CREATE TABLE IF NOT EXISTS work_times (
+    work_time_id INT auto_increment PRIMARY KEY,
+    month_id INT,
+    work_day DATE,
+    start_time TIME,
+    break_time TIME,
+    end_time TIME
+);
