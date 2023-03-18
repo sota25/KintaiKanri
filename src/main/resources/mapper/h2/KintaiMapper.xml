@@ -7,6 +7,9 @@
 	<resultMap type="com.example.demo.entity.Users" id="users"></resultMap>
 	<resultMap type="com.example.demo.entity.Contracts"
 		id="contracts"></resultMap>
+	<resultMap type="com.example.demo.entity.Months" id="months"></resultMap>
+	<resultMap type="com.example.demo.entity.WorkTimes"
+		id="workTimes"></resultMap>
 
 	<!-- ユーザー1件登録 -->
 	<insert id="insertUser">
@@ -44,6 +47,21 @@
 		)
 	</insert>
 
+	<select id="findAllCont" resultMap="contracts">
+		SELECT
+		contract_id,start_date,office_name,end_date
+		FROM contracts
+		JOIN users
+		ON
+		contracts.user_id=users.user_id
+		WHERE contracts.user_id=#{userId}
+	</select>
+
+	<select id="findOneCont" resultMap="contracts">
+		SELECT * FROM contracts WHERE
+		contract_id=#{contractId}
+	</select>
+
 	<select id="findCurrentCont" resultMap="contracts">
 		SELECT * FROM contracts
 		JOIN users ON
@@ -52,5 +70,32 @@
 		DESC
 		LIMIT 1 OFFSET 0
 	</select>
+
+	<insert id="insertMonths">
+		INSERT INTO months(contract_id,year,month)
+		VALUES(#{contractId},#{year},#{month})
+	</insert>
+
+	<select id="findMonthOfWorkTime" resultMap="months">
+		SELECT * FROM months
+		WHERE contract_id=#{contractId}
+		AND year=#{year}
+		AND month=#{month}
+	</select>
+
+	<select id="findAllMonths" resultMap="months">
+		SELECT month_id, year,month
+		FROM months
+		JOIN contracts
+		ON months.contract_id=contracts.contract_id
+		WHERE
+		months.contract_id=#{contractId}
+	</select>
+
+	<insert id="insertWorkTimes">
+		INSERT INTO
+		work_times(month_id,work_day,start_time,break_time,end_time)
+		VALUES(#{monthId},#{workDay},#{startTime},#{breakTime},#{endTime})
+	</insert>
 
 </mapper>

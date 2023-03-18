@@ -2,6 +2,8 @@ package com.example.demo.common;
 
 /**
  * 定数クラス
+ * 
+ * @author S.TAKASUGI
  */
 public class KintaiConstants {
 
@@ -30,6 +32,18 @@ public class KintaiConstants {
 	/** エラー時追加URL */
 	public static final String ERROR_URL = "?error";
 
+	/** 勤怠登録画面ページ */
+	public static final String WORK_TIME_URL = "/workTime";
+
+	/** 契約一覧表示画面ページ */
+	public static final String CONTRACT_LIST_URL = "contracts";
+
+	/** 勤務月一覧表示画面ページ */
+	public static final String MONTH_LIST_URL = "month";
+
+	/** 動的URL(contractId) */
+	public static final String PATH_VAL_CONTRACT_ID = "/{contractId}";
+
 	/************
 	 * 遷移先パス *
 	 ************/
@@ -48,6 +62,12 @@ public class KintaiConstants {
 
 	/** ホーム画面ページのパス */
 	public static final String HOME_LAYOUT_PASS = "contract/homeLayout";
+
+	/** 勤怠登録ページのパス */
+	public static final String WORK_TIME_PASS = "contract/workTime";
+
+	/** 契約一覧表示画面ページのパス */
+	public static final String CONTRACT_LIST_PASS = "contract/contracts";
 
 	/*****************
 	 * リダイレクトパス *
@@ -94,6 +114,9 @@ public class KintaiConstants {
 	/** contentsキ- */
 	public static final String MODEL_KEY_CONTENTS = "contents";
 
+	/** contractsテーブルIDキー */
+	public static final String MODEL_KEY_CONTRACT_ID = "contractId";
+
 	/** 年キー */
 	public static final String MODEL_KEY_YEAR = "year";
 
@@ -106,15 +129,27 @@ public class KintaiConstants {
 	/** 曜日キー */
 	public static final String MODEL_KEY_DAY_OF_WEEK = "dayOfWeek";
 
-	/** 年キー */
+	/** 会社名キー */
 	public static final String MODEL_KEY_OFFICE_NAME = "officeName";
+
+	/** 契約一覧キー */
+	public static final String MODEL_KEY_CONTRACT_LIST = "contracts";
+
+	/** 月一覧キー */
+	public static final String MODEL_KEY_MONTH_LIST = "monthList";
 
 	/*****************
 	 * モデルバリュー値 *
 	 *****************/
 
-	/** homeのやつ */ // あとで変更する
+	/** homeコンテンツ */
 	public static final String MODEL_VAL_HOME_CONTENTS = "contract/home::home_contents";
+
+	/** homeコンテンツ */
+	public static final String MODEL_VAL_CONTRACT_CONTENTS = "contract/contracts::contracts_contents";
+
+	/** homeコンテンツ */
+	public static final String MODEL_VAL_MONTH_CONTENTS = "contract/month::month_contents";
 
 	/******************
 	 * セキュリティ関連 *

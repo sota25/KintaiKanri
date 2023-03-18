@@ -16,9 +16,7 @@ public class CommonService {
 	// Date型だと工数が多くなる
 	public static LocalDateTime getCurrentDate() {
 
-		LocalDateTime currentDate = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-
-		return currentDate;
+		return LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
 	}
 }

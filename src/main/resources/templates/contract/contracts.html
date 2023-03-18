@@ -19,8 +19,8 @@
                 <th class="info col-sm-2">会社名</th>
             </tr>
             <tr th:each="contractEntity:${contracts}">
-                <td th:text="${#dates.format(contractEntity.startDate,'YYYY-MM-dd')}"></td>
-                <td th:text="${#dates.format(contractEntity.endDate,'YYYY-MM-dd')}"></td>
+                <td th:text="${#temporals.format(contractEntity.startDate,'YYYY-MM-dd')}"></td>
+                <td th:text="${#temporals.format(contractEntity.endDate,'YYYY-MM-dd')}"></td>
                 <td th:text="${contractEntity.officeName}"></td>
                 <td>
                     <a class="btn btn-primary" th:href="@{'/month/'+${contractEntity.contractId}}">詳細</a>

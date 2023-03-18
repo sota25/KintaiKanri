@@ -2,7 +2,6 @@ package com.example.demo.entity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 import lombok.Data;
 
@@ -37,5 +36,5 @@ public class Contracts {
 	private String officeName;
 
 	/** 契約終了日 */
-	private Date endDate;
+	private LocalDate endDate;
 }
