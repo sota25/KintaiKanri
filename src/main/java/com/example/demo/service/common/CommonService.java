@@ -5,6 +5,12 @@ import java.time.temporal.ChronoUnit;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * 共通Serviceクラス
+ * 
+ * @author sotatk25
+ *
+ */
 @Service
 public class CommonService {
 

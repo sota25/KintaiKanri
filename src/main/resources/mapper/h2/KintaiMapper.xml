@@ -84,10 +84,15 @@
 	</select>
 
 	<select id="findAllMonths" resultMap="months">
-		SELECT month_id, year,month
+		SELECT months.month_id,
+		year,month
 		FROM months
 		JOIN contracts
-		ON months.contract_id=contracts.contract_id
+		ON
+		months.contract_id=contracts.contract_id
+		JOIN work_times
+		ON
+		months.month_id=work_times.month_id
 		WHERE
 		months.contract_id=#{contractId}
 	</select>
@@ -97,5 +102,24 @@
 		work_times(month_id,work_day,start_time,break_time,end_time)
 		VALUES(#{monthId},#{workDay},#{startTime},#{breakTime},#{endTime})
 	</insert>
+
+	<select id="findAllWorkTimes" resultMap="workTimes">
+		SELECT
+		work_time_id,work_day,start_time,break_time,end_time FROM work_times
+		JOIN months ON work_times.month_id=months.month_id
+		WHERE
+		work_times.month_id=#{monthId}
+	</select>
+
+	<select id="findOneWorkTimes" resultMap="workTimes">
+		SELECT * FROM work_times
+		WHERE work_time_id=#{workTimeId}
+	</select>
+
+	<update id="updateWorkTimes">
+		UPDATE work_times SET
+		month_id=#{monthId},work_day=#{workDay},start_time=#{startTime},break_time=#{breakTime},end_time=#{endTime}
+		WHERE work_time_id=#{workTimeId}
+	</update>
 
 </mapper>

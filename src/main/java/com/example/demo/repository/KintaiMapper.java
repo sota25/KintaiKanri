@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
 
+import com.example.demo.common.KintaiConstants;
 import com.example.demo.entity.Contracts;
 import com.example.demo.entity.Months;
 import com.example.demo.entity.Users;
@@ -87,8 +88,8 @@ public interface KintaiMapper {
 	 * @param month
 	 * @return
 	 */
-	public Months findMonthOfWorkTime(@Param("contractId") int contractId, @Param("year") int year,
-			@Param("month") int month);
+	public Months findMonthOfWorkTime(@Param(KintaiConstants.PARAM_CONTRACT_ID) int contractId,
+			@Param(KintaiConstants.PARAM_YEAR) int year, @Param(KintaiConstants.PARAM_MONTH) int month);
 
 	/**
 	 * 
@@ -96,5 +97,21 @@ public interface KintaiMapper {
 	 * @return
 	 */
 	public int insertWorkTimes(WorkTimes workTime);
+
+	/**
+	 * 
+	 * @param monthId
+	 * @return
+	 */
+	public List<WorkTimes> findAllWorkTimes(int monthId);
+
+	/**
+	 * 
+	 * @param workTimeId
+	 * @return
+	 */
+	public WorkTimes findOneWorkTimes(int workTimeId);
+
+	public int updateWorkTimes(WorkTimes work);
 
 }

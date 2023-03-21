@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import java.time.LocalDate;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,9 +24,9 @@ import com.example.demo.form.SignupForm;
 import com.example.demo.form.WorkTimeForm;
 import com.example.demo.model.valid.GroupOrder;
 import com.example.demo.service.ContractService;
-import com.example.demo.service.MonthService;
 import com.example.demo.service.UserService;
-import com.example.demo.service.WorkTimeService;
+import com.example.demo.service.WorkTimesService;
+import com.example.demo.service.impl.MonthServiceImpl;
 
 /**
  * 登録処理関連Controllerクラス
@@ -48,10 +46,10 @@ public class InsertController {
 	private ContractService contractService;
 
 	@Autowired
-	private MonthService monthService;
+	private MonthServiceImpl monthService;
 
 	@Autowired
-	private WorkTimeService workTimeService;
+	private WorkTimesService workTimesService;
 
 	/**
 	 * 新規登録画面のgetメソッド
@@ -175,44 +173,12 @@ public class InsertController {
 		}
 
 		WorkTimes work = modelMapper.map(form, WorkTimes.class);
-		Months monthsOfWorkTime = getMonthOfWorkTime(contractId, form.getWorkDay());// 入力した勤務日情報と一致する月テーブル情報を取得
+		Months monthsOfWorkTime = monthService.getMonthOfWorkTime(contractId, form.getWorkDay());// 入力した勤務日情報と一致する月テーブル情報を取得
 		work.setMonthId(monthsOfWorkTime.getMonthId());// monthIdをsetする必要がある
 
-		workTimeService.insertWorkTimes(work);
+		workTimesService.insertWorkTimes(work);
 
 		return KintaiConstants.REDIRECT_HOME;
-	}
-
-	/**
-	 * 勤怠情報入力時の該当月テーブル取得 <br>
-	 * 入力した勤務日に対する月テーブルが存在しない場合、登録処理を実行 </br>
-	 * 
-	 * @param contractId 最新の契約のcontractテーブルID
-	 * @param workDay    入力した勤務日
-	 * @return 勤怠情報入力時の該当月テーブル
-	 */
-	private Months getMonthOfWorkTime(int contractId, LocalDate workDay) {
-
-		int year = workDay.getYear();
-		int month = workDay.getMonthValue();
-
-		Months monthsOfWorkTime = monthService.findMonthOfWorkTime(contractId, year, month);
-
-		// 勤務日に対応する月テーブルデータが存在しない場合、新規で登録処理を行う
-		if (monthsOfWorkTime == null) {
-			// monthsテーブルはformから値をとってこないため、ModelMapperは使えない
-			// ↑嘘をついている可能性はあり
-			Months months = new Months();
-			months.setContractId(contractId);
-			months.setYear(year);
-			months.setMonth(month);
-
-			monthService.insertMonts(months);
-
-			monthsOfWorkTime = monthService.findMonthOfWorkTime(contractId, year, month);
-		}
-
-		return monthsOfWorkTime;
 	}
 
 }

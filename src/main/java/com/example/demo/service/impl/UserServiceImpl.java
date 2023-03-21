@@ -16,6 +16,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private KintaiMapper kintaiMapper;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int insertUser(Users users) {
 

@@ -43,7 +43,7 @@ public class HomeController {
 
 		// ホーム画面で必要な契約情報を登録
 		Contracts currentCont = contractService.findCurrentCont(user.getUserId());
-		model.addAttribute(KintaiConstants.MODEL_KEY_CONTRACT_ID, currentCont.getUserId());
+		model.addAttribute(KintaiConstants.MODEL_KEY_CONTRACT_ID, currentCont.getContractId());
 		model.addAttribute(KintaiConstants.MODEL_KEY_OFFICE_NAME, currentCont.getOfficeName());
 
 		// ホーム画面に表示する現在時刻を取得

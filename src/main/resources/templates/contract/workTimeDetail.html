@@ -23,8 +23,8 @@
                     <th class="info col-sm-2"></th>
                     <th class="info col-sm-2"></th>
                 </tr>
-                <tr th:each="workTimeEntity:${workTime}">
-                    <td th:text="${#dates.format(workTimeEntity.workDay,'YYYY/MM/dd')}"></td>
+                <tr th:each="workTimeEntity:${workTimeList}">
+                    <td th:text="${#temporals.format(workTimeEntity.workDay,'YYYY/MM/dd')}"></td>
                     <td th:text="${#temporals.format(workTimeEntity.startTime,'HH:mm')}"></td>
                     <td th:text="${#temporals.format(workTimeEntity.breakTime,'HH:mm')}"></td>
                     <td th:text="${#temporals.format(workTimeEntity.endTime,'HH:mm')}"></td>
