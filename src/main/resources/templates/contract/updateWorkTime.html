@@ -31,7 +31,7 @@
                        <th class="active">始業時間</th>
                        <td>
                            <div class="form-group" th:classappend="${#fields.hasErrors('startTime')}?'has-error'">
-                               <input type="time" class="form-control" name="startTime" th:value="${updateInfo.startTime}"/>
+                               <input type="time" class="form-control" name="startTime" th:value="${workTimeDetail.startTime}"/>
                                <span class="text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}">startTime error</span>
                            </div>
                        </td>
@@ -40,7 +40,7 @@
                        <th class="active">休憩時間</th>
                        <td>
                            <div class="form-group" th:classappend="${#fields.hasErrors('breakTime')}?'has-error'">
-                               <input type="time" class="form-control" name="breakTime" th:value="${updateInfo.breakTime}"/>
+                               <input type="time" class="form-control" name="breakTime" th:value="${workTimeDetail.breakTime}"/>
                                <span class="text-danger" th:if="${#fields.hasErrors('breakTime')}" th:errors="*{breakTime}">breakTime error</span>
                            </div>
                        </td>
@@ -49,7 +49,7 @@
                        <th class="active">終業時間</th>
                        <td>
                            <div class="form-group" th:classappend="${#fields.hasErrors('endTime')}?'has-error'">
-                               <input type="time" class="form-control" name="endTime" th:value="${updateInfo.endTime}"/>
+                               <input type="time" class="form-control" name="endTime" th:value="${workTimeDetail.endTime}"/>
                                <span class="text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">endTime error</span>
                            </div>
                        </td>

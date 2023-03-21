@@ -36,13 +36,25 @@ public class KintaiConstants {
 	public static final String WORK_TIME_URL = "/workTime";
 
 	/** 契約一覧表示画面ページ */
-	public static final String CONTRACT_LIST_URL = "contracts";
+	public static final String CONTRACT_LIST_URL = "/contracts";
 
 	/** 勤務月一覧表示画面ページ */
-	public static final String MONTH_LIST_URL = "month";
+	public static final String MONTH_LIST_URL = "/month";
+
+	/** 勤怠一覧表示画面ページ */
+	public static final String WORK_TIME_LIST_URL = "/workTimeDetail";
+
+	/** 勤怠更新画面ページ */
+	public static final String WORK_TIME_UPDATE_URL = "/updateWorkTime";
 
 	/** 動的URL(contractId) */
 	public static final String PATH_VAL_CONTRACT_ID = "/{contractId}";
+
+	/** 動的URL(monthId) */
+	public static final String PATH_VAL_MONTH_ID = "/{monthId}";
+
+	/** 動的URL(workTimeId) */
+	public static final String PATH_VAL_WORK_TIME_ID = "/{workTimeId}";
 
 	/************
 	 * 遷移先パス *
@@ -117,6 +129,12 @@ public class KintaiConstants {
 	/** contractsテーブルIDキー */
 	public static final String MODEL_KEY_CONTRACT_ID = "contractId";
 
+	/** monthsテーブルIDキー */
+	public static final String MODEL_KEY_MONTH_ID = "monthId";
+
+	/** work_timesテーブルIDキー */
+	public static final String MODEL_KEY_WORK_TIME_ID = "workTimeId";
+
 	/** 年キー */
 	public static final String MODEL_KEY_YEAR = "year";
 
@@ -138,6 +156,15 @@ public class KintaiConstants {
 	/** 月一覧キー */
 	public static final String MODEL_KEY_MONTH_LIST = "monthList";
 
+	/** 勤怠一覧キー */
+	public static final String MODEL_KEY_WORK_TIME_LIST = "workTimeList";
+
+	/** 勤怠登録フォームキー */
+	public static final String MODEL_KEY_WORK_TIME_FORM = "workTimeForm";
+
+	/** 勤怠詳細キー */
+	public static final String MODEL_KEY_WORK_TIME_DETAIL = "workTimeDetail";
+
 	/*****************
 	 * モデルバリュー値 *
 	 *****************/
@@ -145,11 +172,33 @@ public class KintaiConstants {
 	/** homeコンテンツ */
 	public static final String MODEL_VAL_HOME_CONTENTS = "contract/home::home_contents";
 
-	/** homeコンテンツ */
+	/** contractコンテンツ */
 	public static final String MODEL_VAL_CONTRACT_CONTENTS = "contract/contracts::contracts_contents";
 
-	/** homeコンテンツ */
+	/** monthコンテンツ */
 	public static final String MODEL_VAL_MONTH_CONTENTS = "contract/month::month_contents";
+
+	/** workTimeDetailsコンテンツ */
+	public static final String MODEL_VAL_WORK_TIME_CONTENTS = "contract/workTimeDetail::workTimeDetail_contents";
+
+	/** workTimeDetailsコンテンツ */
+	public static final String MODEL_VAL_UPDATE_WORK_TIME_CONTENTS = "contract/updateWorkTime::updateWorkTime_contents";
+
+	/***********
+	 * Param値 *
+	 ***********/
+
+	/** contractId Param値 */
+	public static final String PARAM_CONTRACT_ID = "contractId";
+
+	/** year Param値 */
+	public static final String PARAM_YEAR = "year";
+
+	/** month Param値 */
+	public static final String PARAM_MONTH = "month";
+
+	/** update Param値 */
+	public static final String PARAM_UPDATE = "update";
 
 	/******************
 	 * セキュリティ関連 *
