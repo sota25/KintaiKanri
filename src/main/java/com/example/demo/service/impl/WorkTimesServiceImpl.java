@@ -52,4 +52,9 @@ public class WorkTimesServiceImpl implements WorkTimesService {
 		return kintaiMapper.updateWorkTimes(work);
 	}
 
+	@Override
+	public int deleteWorkTimes(int workTimeId) {
+		return kintaiMapper.deleteWorkTimes(workTimeId);
+	}
+
 }

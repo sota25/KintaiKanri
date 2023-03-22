@@ -16,4 +16,6 @@ public interface WorkTimesService {
 	public WorkTimes findOneWorkTimes(int workTimeId);
 
 	public int updateWorkTimes(WorkTimes work);
+
+	public int deleteWorkTimes(int workTimeId);
 }

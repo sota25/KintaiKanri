@@ -29,6 +29,12 @@ public class KintaiConstants {
 	/** ホーム画面ページ */
 	public static final String HOME_URL = "/home";
 
+	/** メールアドレス変更画面ページ */
+	public static final String CHANGE_EMAIL_URL = "/changeEmail";
+
+	/** パスワード変更画面ページ */
+	public static final String CHANGE_PASSWORD_URL = "/changePassword";
+
 	/** エラー時追加URL */
 	public static final String ERROR_URL = "?error";
 
@@ -46,6 +52,9 @@ public class KintaiConstants {
 
 	/** 勤怠更新画面ページ */
 	public static final String WORK_TIME_UPDATE_URL = "/updateWorkTime";
+
+	/** 勤怠削除画面ページ */
+	public static final String WORK_TIME_DELETE_URL = "/deleteWorkTime";
 
 	/** 動的URL(contractId) */
 	public static final String PATH_VAL_CONTRACT_ID = "/{contractId}";
@@ -123,17 +132,14 @@ public class KintaiConstants {
 	 * モデルキー値 *
 	 **************/
 
+	/** 現在のメールアドレスキー */
+	public static final String MODEL_KEY_OLD_EMAIL = "oldEmail";
+
 	/** contentsキ- */
 	public static final String MODEL_KEY_CONTENTS = "contents";
 
 	/** contractsテーブルIDキー */
 	public static final String MODEL_KEY_CONTRACT_ID = "contractId";
-
-	/** monthsテーブルIDキー */
-	public static final String MODEL_KEY_MONTH_ID = "monthId";
-
-	/** work_timesテーブルIDキー */
-	public static final String MODEL_KEY_WORK_TIME_ID = "workTimeId";
 
 	/** 年キー */
 	public static final String MODEL_KEY_YEAR = "year";
@@ -149,6 +155,24 @@ public class KintaiConstants {
 
 	/** 会社名キー */
 	public static final String MODEL_KEY_OFFICE_NAME = "officeName";
+
+	/** monthsテーブルIDキー */
+	public static final String MODEL_KEY_MONTH_ID = "monthId";
+
+	/** work_timesテーブルIDキー */
+	public static final String MODEL_KEY_WORK_TIME_ID = "workTimeId";
+
+	/** 勤務日キー */
+	public static final String MODEL_KEY_WORK_DAY = "workDay";
+
+	/** 開始時間テーブルIDキー */
+	public static final String MODEL_KEY_START_TIME = "startTime";
+
+	/** 開始時間テーブルIDキー */
+	public static final String MODEL_KEY_BREAK_TIME = "breakTime";
+
+	/** 開始時間テーブルIDキー */
+	public static final String MODEL_KEY_END_TIME = "endTime";
 
 	/** 契約一覧キー */
 	public static final String MODEL_KEY_CONTRACT_LIST = "contracts";
@@ -171,6 +195,12 @@ public class KintaiConstants {
 
 	/** homeコンテンツ */
 	public static final String MODEL_VAL_HOME_CONTENTS = "contract/home::home_contents";
+
+	/** changeEmailコンテンツ */
+	public static final String MODEL_VAL_CHANGE_EMAIL = "user/changeEmail::changeEmail_contents";
+
+	/** changePasswordコンテンツ */
+	public static final String MODEL_VAL_CHANGE_PASSWORD = "user/changePassword::changePassword_contents";
 
 	/** contractコンテンツ */
 	public static final String MODEL_VAL_CONTRACT_CONTENTS = "contract/contracts::contracts_contents";
