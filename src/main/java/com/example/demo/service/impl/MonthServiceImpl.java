@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Months;
+import com.example.demo.entity.WorkTimes;
 import com.example.demo.repository.KintaiMapper;
 import com.example.demo.service.MonthService;
 
@@ -31,14 +32,7 @@ public class MonthServiceImpl implements MonthService {
 		return kintaiMapper.findMonthOfWorkTime(contractId, year, month);
 	}
 
-	/**
-	 * 勤怠情報入力時の該当月テーブル取得 <br>
-	 * 入力した勤務日に対する月テーブルが存在しない場合、登録処理を実行 </br>
-	 * 
-	 * @param contractId 最新の契約のcontractテーブルID
-	 * @param workDay    入力した勤務日
-	 * @return 勤怠情報入力時の該当月テーブル
-	 */
+	@Override
 	public Months getMonthOfWorkTime(int contractId, LocalDate workDay) {
 
 		int year = workDay.getYear();
@@ -46,7 +40,7 @@ public class MonthServiceImpl implements MonthService {
 
 		Months monthsOfWorkTime = findMonthOfWorkTime(contractId, year, month);
 
-		// 勤務日に対応する月テーブルデータが存在しない場合、新規で登録処理を行う
+		// 勤務日に対応する月テーブルデータが存在しない場合、新規で登録処理を行う必要がある
 		if (monthsOfWorkTime == null) {
 			// monthsテーブルはformから値をとってこないため、ModelMapperは使えない
 			// ↑嘘をついている可能性はあり
@@ -61,5 +55,16 @@ public class MonthServiceImpl implements MonthService {
 		}
 
 		return monthsOfWorkTime;
+	}
+
+	@Override
+	public int getContractId(int workTimeId) {
+
+		WorkTimes workTime = kintaiMapper.findOneWorkTimes(workTimeId);
+
+		Months month = kintaiMapper.findOneMonths(workTime.getMonthId());
+
+		return month.getContractId();
+
 	}
 }

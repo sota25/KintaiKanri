@@ -30,6 +30,21 @@ public interface KintaiMapper {
 	/**
 	 * ログインユーザー取得Mapper(1件)
 	 * 
+	 * @param userId usersテーブルID
+	 * @return usersテーブルデータ(1件)
+	 */
+	public Users findOneUser(int userId);
+
+	/**
+	 * 
+	 * @param users
+	 * @return
+	 */
+	public int updateUsers(Users users);
+
+	/**
+	 * ログインユーザー取得Mapper(1件)
+	 * 
 	 * @param email ログインメールアドレス
 	 * @return usersテーブルデータ(1件)
 	 */
@@ -82,6 +97,14 @@ public interface KintaiMapper {
 	public List<Months> findAllMonths(int contractId);
 
 	/**
+	 * Monthsテーブルデータ取得Mapper(1件)
+	 * 
+	 * @param month monthsテーブルID
+	 * @return Monthsテーブルデータ取得(1件)
+	 */
+	public Months findOneMonths(int monthId);
+
+	/**
 	 * 
 	 * @param contractId
 	 * @param year
@@ -112,6 +135,18 @@ public interface KintaiMapper {
 	 */
 	public WorkTimes findOneWorkTimes(int workTimeId);
 
+	/**
+	 * 
+	 * @param work
+	 * @return
+	 */
 	public int updateWorkTimes(WorkTimes work);
+
+	/**
+	 * 
+	 * @param workTimeId
+	 * @return
+	 */
+	public int deleteWorkTimes(int workTimeId);
 
 }

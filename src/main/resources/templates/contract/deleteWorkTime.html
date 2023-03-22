@@ -16,7 +16,7 @@
         </div>     
         <form method="post" th:action="@{/deleteWorkTime/{workTimeId}(workTimeId=${workTimeId})}" th:object="${workTimeForm}">
             <table class="table table-bordered table-hover table-striped">
-                <span th:text="勤務日：+${#dates.format(workDay,'YYYY/MM/dd')}"></span> 
+                <span th:text="勤務日：+${#temporals.format(workDay,'YYYY/MM/dd')}"></span> 
                 <br/>
                 <span th:text="始業時間：+${#temporals.format(startTime,'HH:mm')}"></span>
                 <br/>
