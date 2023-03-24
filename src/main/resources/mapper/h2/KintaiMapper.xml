@@ -91,6 +91,12 @@
 		WHERE contract_id=#{contractId}
 	</update>
 
+	<select id="countCont" resultType="int">
+		SELECT count(*) FROM
+		contracts
+		WHERE user_id = #{userId}
+	</select>
+
 	<insert id="insertMonths">
 		INSERT INTO months(contract_id,year,month)
 		VALUES(#{contractId},#{year},#{month})
