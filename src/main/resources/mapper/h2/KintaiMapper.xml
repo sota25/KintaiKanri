@@ -40,8 +40,9 @@
 
 	<update id="updateUsers">
 		UPDATE users SET
-		email=#{email},password=#{password}
-		WHERE user_id=#{userId}
+		email=#{email},password=#{password},user_status=#{userStatus}
+		WHERE
+		user_id=#{userId}
 	</update>
 
 	<!-- ログインユーザー取得 -->
@@ -49,6 +50,19 @@
 		SELECT
 		user_id,email,password,role,user_status FROM users WHERE
 		email=#{email}
+	</select>
+
+	<select id="countNewUsers" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM users
+		WHERE
+		user_status=0
+		ORDER BY requested_at
+	</select>
+
+	<select id="findAllNewUsers" resultMap="users">
+		SELECT * FROM users
+		WHERE
+		user_status=0
 	</select>
 
 	<!-- 契約1件登録 -->

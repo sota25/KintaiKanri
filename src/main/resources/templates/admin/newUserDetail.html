@@ -16,8 +16,8 @@
         <h2 th:text="申請時間：+${#temporals.format(requestedAt,'yyyy-MM-dd HH:mm:ss')}"></h2>
         <br/>
         <form method="post" th:action="@{/newUserDetail/{userId}(userId=${userId})}">
-            <button class="btn btn-primary" type="submit" name="allow">許可</button>
-            <button class="btn btn-primary" type="submit" name="freeze">拒否</button>
+            <button class="btn btn-primary" type="submit" name="approve">許可</button>
+            <button class="btn btn-primary" type="submit" name="frozen">拒否</button>
         </form>
     </div>
 </body>

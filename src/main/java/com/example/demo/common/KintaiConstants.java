@@ -65,6 +65,12 @@ public class KintaiConstants {
 	/** 管理者ホーム画面ページ */
 	public static final String ADMIN_HOME_URL = "/adminHome";
 
+	/** 管理者新規ユーザー一覧画面ページ */
+	public static final String ADMIN_NEW_USER_LIST_URL = "/newUserList";
+
+	/** 動的URL(userId) */
+	public static final String PATH_VAL_USER_ID = "/{userId}";
+
 	/** 動的URL(contractId) */
 	public static final String PATH_VAL_CONTRACT_ID = "/{contractId}";
 
@@ -90,7 +96,7 @@ public class KintaiConstants {
 	/** ユーザー登録完了ページのパス */
 	public static final String SIGNUP_COMPLETION_PASS = "user/completion";
 
-	/** ホーム画面ページのパス */
+	/** ホームレイアウトのパス */
 	public static final String HOME_LAYOUT_PASS = "contract/homeLayout";
 
 	/** 勤怠登録ページのパス */
@@ -98,6 +104,9 @@ public class KintaiConstants {
 
 	/** 契約一覧表示画面ページのパス */
 	public static final String CONTRACT_LIST_PASS = "contract/contracts";
+
+	/** 管理者ホームレイアウトのパス */
+	public static final String ADMIN_HOME_LAYOUT_PASS = "admin/adminHomeLayout";
 
 	/*****************
 	 * リダイレクトパス *
@@ -114,6 +123,9 @@ public class KintaiConstants {
 
 	/** ホーム画面のリダイレクト */
 	public static final String REDIRECT_HOME = "redirect:/home";
+
+	/** 管理者ホーム画面のリダイレクト */
+	public static final String REDIRECT_ADMIN_HOME = "redirect:/adminHome";
 
 	/**************
 	 * データ固定値 *
@@ -143,6 +155,18 @@ public class KintaiConstants {
 	/**************
 	 * モデルキー値 *
 	 **************/
+
+	/** usersテーブルIDキー */
+	public static final String MODEL_KEY_USER_ID = "userId";
+
+	/** usersテーブルIDキー */
+	public static final String MODEL_KEY_USER_NAME = "userName";
+
+	/** usersテーブルIDキー */
+	public static final String MODEL_KEY_EMAIL = "email";
+
+	/** usersテーブルIDキー */
+	public static final String MODEL_KEY_REQUESTED_AT = "requestedAt";
 
 	/** 現在のメールアドレスキー */
 	public static final String MODEL_KEY_OLD_EMAIL = "oldEmail";
@@ -204,6 +228,15 @@ public class KintaiConstants {
 	/** 勤怠詳細キー */
 	public static final String MODEL_KEY_WORK_TIME_DETAIL = "workTimeDetail";
 
+	/** 新規ユーザー件数キー */
+	public static final String MODEL_KEY_COUNT_NEW_USERS = "countNewUsers";
+
+	/** 新規ユーザー一覧キー */
+	public static final String MODEL_KEY_NEW_USERS_LIST = "newUsersList";
+
+	/** 新規ユーザー詳細キー */
+	public static final String MODEL_KEY_NEW_USERS_DETAIL = "newUserDetail";
+
 	/*****************
 	 * モデルバリュー値 *
 	 *****************/
@@ -232,8 +265,20 @@ public class KintaiConstants {
 	/** workTimeDetailsコンテンツ */
 	public static final String MODEL_VAL_WORK_TIME_CONTENTS = "contract/workTimeDetail::workTimeDetail_contents";
 
-	/** workTimeDetailsコンテンツ */
+	/** updateWorkTimeコンテンツ */
 	public static final String MODEL_VAL_UPDATE_WORK_TIME_CONTENTS = "contract/updateWorkTime::updateWorkTime_contents";
+
+	/** deleteWorkTimeコンテンツ */
+	public static final String MODEL_VAL_DELETE_WORK_TIME_CONTENTS = "contract/deleteWorkTime::deleteWorkTime_contents";
+
+	/** adminHomeコンテンツ */
+	public static final String MODEL_VAL_ADMIN_HOME_CONTENTS = "admin/adminHome::adminHome_contents";
+
+	/** newUserListコンテンツ */
+	public static final String MODEL_VAL_NEW_USER_LIST_CONTENTS = "admin/newUserList::newUserList_contents";
+
+	/** newUserDetailコンテンツ */
+	public static final String MODEL_VAL_NEW_USER_DETAIL_CONTENTS = "admin/newUserDetail::newUserDetail_contents";
 
 	/***********
 	 * Param値 *
@@ -250,6 +295,15 @@ public class KintaiConstants {
 
 	/** update Param値 */
 	public static final String PARAM_UPDATE = "update";
+
+	/** delete Param値 */
+	public static final String PARAM_DELETE = "delete";
+
+	/** approve Param値 */
+	public static final String PARAM_APPROVE = "approve";
+
+	/** frozen Param値 */
+	public static final String PARAM_FROZEN = "frozen";
 
 	/******************
 	 * セキュリティ関連 *

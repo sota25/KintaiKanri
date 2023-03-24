@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,6 +58,21 @@ public class UserServiceImpl implements UserService {
 		String rawPassword = users.getPassword();
 		users.setPassword(encoder.encode(rawPassword));
 
+		return kintaiMapper.updateUsers(users);
+	}
+
+	@Override
+	public int countNewUsers() {
+		return kintaiMapper.countNewUsers();
+	}
+
+	@Override
+	public List<Users> findAllNewUSers() {
+		return kintaiMapper.findAllNewUsers();
+	}
+
+	@Override
+	public int updateUserStatus(Users users) {
 		return kintaiMapper.updateUsers(users);
 	}
 
