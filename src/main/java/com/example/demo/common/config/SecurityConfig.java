@@ -11,9 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.example.demo.common.KintaiConstants;
+import com.example.demo.common.security.CustomSuccessHandler;
 
 /**
  * セキュリティ実装クラス
@@ -35,6 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
+	@Bean
+	AuthenticationSuccessHandler customSuccessHandler() {
+		// カスタムで作成したハンドラを返す
+		return new CustomSuccessHandler();
+	}
+
 	/** セキュリティ対象外設定メソッド */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -48,12 +56,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 直リンク設定
 		http.authorizeRequests().antMatchers(KintaiConstants.WEBJARS_DIR).permitAll()
 				.antMatchers(KintaiConstants.CSS_DIR).permitAll().antMatchers(KintaiConstants.LOGIN_URL).permitAll()
-				.antMatchers(KintaiConstants.SIGNUP_URL).permitAll().anyRequest().authenticated();
+				.antMatchers(KintaiConstants.SIGNUP_URL).permitAll().antMatchers(KintaiConstants.SIGNUP_COMPLETION_URL)
+				.permitAll().anyRequest().authenticated();
 
 		// ログイン設定
 		http.formLogin().loginProcessingUrl(KintaiConstants.LOGIN_URL)
 				.usernameParameter(KintaiConstants.USER_NAME_PARAM).passwordParameter(KintaiConstants.PASSWORD_PARAM)
-				.defaultSuccessUrl(KintaiConstants.HOME_URL, true).loginPage(KintaiConstants.LOGIN_URL)
+				.successHandler(customSuccessHandler()).loginPage(KintaiConstants.LOGIN_URL)
 				.failureUrl(KintaiConstants.LOGIN_URL.concat(KintaiConstants.ERROR_URL));
 
 		// ログアウト設定

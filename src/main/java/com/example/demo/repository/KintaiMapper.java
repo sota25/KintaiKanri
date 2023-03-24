@@ -88,6 +88,13 @@ public interface KintaiMapper {
 	public int updateCont(Contracts contract);
 
 	/**
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	public int countCont(int userId);
+
+	/**
 	 * 月登録Mapper
 	 * 
 	 * @param month

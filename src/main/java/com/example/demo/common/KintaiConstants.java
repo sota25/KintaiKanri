@@ -62,6 +62,9 @@ public class KintaiConstants {
 	/** 勤怠削除画面ページ */
 	public static final String WORK_TIME_DELETE_URL = "/deleteWorkTime";
 
+	/** 管理者ホーム画面ページ */
+	public static final String ADMIN_HOME_URL = "/adminHome";
+
 	/** 動的URL(contractId) */
 	public static final String PATH_VAL_CONTRACT_ID = "/{contractId}";
 

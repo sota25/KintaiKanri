@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		String rawPassword = users.getPassword();
 		users.setPassword(encoder.encode(rawPassword));
 		users.setRole(KintaiConstants.ROLE_GENERAL_NUM);// roleの登録値は1(一般ユーザー)で固定
-		users.setUserStatus(KintaiConstants.ROLE_GENERAL_NUM);// userStatusの登録値は0(未承認)で固定
+		users.setUserStatus(KintaiConstants.USER_STATUS_NOT_APPROVE_NUM);// userStatusの登録値は0(未承認)で固定
 		users.setRequestedAt(CommonService.getCurrentDate());
 
 		return kintaiMapper.insertUser(users);

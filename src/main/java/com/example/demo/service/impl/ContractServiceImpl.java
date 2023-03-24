@@ -46,4 +46,9 @@ public class ContractServiceImpl implements ContractService {
 		return kintaiMapper.updateCont(contract);
 	}
 
+	@Override
+	public int countCont(int userId) {
+		return kintaiMapper.countCont(userId);
+	}
+
 }

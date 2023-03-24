@@ -52,4 +52,7 @@ public interface ContractService {
 	 */
 	public int updateCont(Contracts contract);
 
+	public int countCont(int userId);
+	
+
 }
