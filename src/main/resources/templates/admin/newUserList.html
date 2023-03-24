@@ -18,7 +18,7 @@
                 <th class="info col-sm-2">メールアドレス</th>
                 <th class="info col-sm-2">申請時間</th>
             </tr>
-            <tr th:each="userEntity:${newUser}">
+            <tr th:each="userEntity:${newUsersList}">
                 <td th:text="${userEntity.userName}"></td>
                 <td th:text="${userEntity.email}"></td>
                 <td th:text="${#temporals.format(userEntity.requestedAt,'yyyy-MM-dd HH:mm:ss')}"></td>

@@ -43,6 +43,18 @@ public interface KintaiMapper {
 	public int updateUsers(Users users);
 
 	/**
+	 * 
+	 * @return
+	 */
+	public int countNewUsers();
+
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Users> findAllNewUsers();
+
+	/**
 	 * ログインユーザー取得Mapper(1件)
 	 * 
 	 * @param email ログインメールアドレス

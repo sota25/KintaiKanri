@@ -13,7 +13,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 </head>
 <body class="text-center">
     <div th:fragment="adminHome_contents">
-        <h1 th:text="アカウントの新規申請数：+${count}+件"></h1>    
+        <h1 th:text="アカウントの新規申請数：+${countNewUsers}+件"></h1>    
         <br/>  
         <a th:href="@{'/newUserList'}" class="btn btn-primary">新規申請者一覧</a>
     </div>

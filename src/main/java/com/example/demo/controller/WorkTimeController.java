@@ -136,7 +136,7 @@ public class WorkTimeController {
 	@GetMapping(KintaiConstants.WORK_TIME_DELETE_URL + KintaiConstants.PATH_VAL_WORK_TIME_ID)
 	public String getDeleteWorkTime(Model model, @PathVariable(KintaiConstants.MODEL_KEY_WORK_TIME_ID) int workTimeId,
 			@ModelAttribute WorkTimeForm form) {
-		model.addAttribute(KintaiConstants.MODEL_KEY_CONTENTS, "contract/deleteWorkTime::deleteWorkTime_contents");
+		model.addAttribute(KintaiConstants.MODEL_KEY_CONTENTS, KintaiConstants.MODEL_VAL_DELETE_WORK_TIME_CONTENTS);
 
 		WorkTimes workTime = workTimesService.findOneWorkTimes(workTimeId);
 
@@ -152,7 +152,7 @@ public class WorkTimeController {
 	}
 
 	@PostMapping(value = KintaiConstants.WORK_TIME_DELETE_URL
-			+ KintaiConstants.PATH_VAL_WORK_TIME_ID, params = "delete")
+			+ KintaiConstants.PATH_VAL_WORK_TIME_ID, params = KintaiConstants.PARAM_DELETE)
 	public String postDeleteWorkTime(@ModelAttribute WorkTimeForm form, Model model,
 			@PathVariable(KintaiConstants.MODEL_KEY_WORK_TIME_ID) int workTimeId) {
 

@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Users;
@@ -44,5 +46,24 @@ public interface UserService {
 	 * @return
 	 */
 	public int updatePassword(Users users);
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int countNewUsers();
+
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Users> findAllNewUSers();
+	
+	/**
+	 * 
+	 * @param users
+	 * @return
+	 */
+	public int updateUserStatus(Users users);
 
 }
