@@ -67,6 +67,8 @@
 		ON
 		contracts.user_id=users.user_id
 		WHERE contracts.user_id=#{userId}
+		ORDER
+		BY start_date
 	</select>
 
 	<select id="findOneCont" resultMap="contracts">
@@ -82,6 +84,12 @@
 		DESC
 		LIMIT 1 OFFSET 0
 	</select>
+
+	<update id="updateCont">
+		UPDATE contracts SET
+		contract_time=#{contractTime},start_time=#{startTime},break_time=#{breakTime},end_time=#{endTime},start_date=#{startDate},office_name=#{officeName},end_date=#{endDate}
+		WHERE contract_id=#{contractId}
+	</update>
 
 	<insert id="insertMonths">
 		INSERT INTO months(contract_id,year,month)

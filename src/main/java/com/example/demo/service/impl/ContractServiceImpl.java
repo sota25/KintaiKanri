@@ -41,4 +41,9 @@ public class ContractServiceImpl implements ContractService {
 		return kintaiMapper.findCurrentCont(userId);
 	}
 
+	@Override
+	public int updateCont(Contracts contract) {
+		return kintaiMapper.updateCont(contract);
+	}
+
 }
