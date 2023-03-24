@@ -9,24 +9,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.common.KintaiConstants;
 import com.example.demo.common.security.impl.UserDetailsImpl;
-import com.example.demo.entity.Months;
 import com.example.demo.entity.Users;
-import com.example.demo.entity.WorkTimes;
 import com.example.demo.form.ChangeEmailForm;
 import com.example.demo.form.ChangePasswordForm;
-import com.example.demo.form.WorkTimeForm;
+import com.example.demo.form.SignupForm;
 import com.example.demo.model.valid.GroupOrder;
-import com.example.demo.service.MonthService;
 import com.example.demo.service.UserService;
-import com.example.demo.service.WorkTimesService;
 
 @Controller
-public class UpdateController {
+public class UserController {
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -34,55 +29,50 @@ public class UpdateController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	private MonthService monthService;
+	/**
+	 * 新規登録画面のgetメソッド
+	 * 
+	 * @param form  新規登録用フォーム
+	 * @param model Modelクラス
+	 * @return 新規登録画面のパス
+	 */
+	@GetMapping(KintaiConstants.SIGNUP_URL)
+	public String getSignup(@ModelAttribute SignupForm form, Model model) {
+		return KintaiConstants.SIGNUP_PASS;
+	}
 
-	@Autowired
-	private WorkTimesService workTimesService;
+	/**
+	 * 新規登録画面のgetメソッド
+	 * 
+	 * @param form   新規登録用フォーム
+	 * @param result BindingResultクラス
+	 * @param model  Modelクラス
+	 * @return 登録完了画面へのリダイレクトパス
+	 */
+	@PostMapping(KintaiConstants.SIGNUP_URL)
+	public String postSignup(@ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult result,
+			Model model) {
 
-	@GetMapping(KintaiConstants.WORK_TIME_UPDATE_URL + KintaiConstants.PATH_VAL_WORK_TIME_ID)
-	public String getUpdateWorkTime(Model model, @PathVariable(KintaiConstants.MODEL_KEY_WORK_TIME_ID) int workTimeId,
-			@ModelAttribute WorkTimeForm form) {
-		model.addAttribute(KintaiConstants.MODEL_KEY_CONTENTS, KintaiConstants.MODEL_VAL_UPDATE_WORK_TIME_CONTENTS);
+		if (result.hasErrors()) {
+			return getSignup(form, model);
+		}
 
-		WorkTimes workTime = workTimesService.findOneWorkTimes(workTimeId);
+		Users users = modelMapper.map(form, Users.class);
+		userService.insertUser(users);
 
-		form.setWorkDay(workTime.getWorkDay());
-		form.setStartTime(workTime.getStartTime());
-		form.setBreakTime(workTime.getBreakTime());
-		form.setEndTime(workTime.getEndTime());
-
-		model.addAttribute(KintaiConstants.MODEL_KEY_WORK_TIME_FORM, form);
-
-		model.addAttribute(KintaiConstants.MODEL_KEY_WORK_TIME_ID, workTime.getWorkTimeId());
-		model.addAttribute(KintaiConstants.MODEL_KEY_MONTH_ID, workTime.getMonthId());
-		model.addAttribute(KintaiConstants.MODEL_KEY_WORK_TIME_DETAIL, workTime);
-
-		return KintaiConstants.HOME_LAYOUT_PASS;
+		return KintaiConstants.REDIRECT_COMPLETION;
 
 	}
 
-	@PostMapping(value = KintaiConstants.WORK_TIME_UPDATE_URL
-			+ KintaiConstants.PATH_VAL_WORK_TIME_ID, params = KintaiConstants.PARAM_UPDATE)
-	public String postUpdateWorkTime(@ModelAttribute @Validated(GroupOrder.class) WorkTimeForm form,
-			BindingResult bindingResult, Model model,
-			@PathVariable(KintaiConstants.MODEL_KEY_WORK_TIME_ID) int workTimeId) {
+	/**
+	 * 登録完了画面のgetメソッド
+	 * 
+	 * @return 登録完了画面のパス
+	 */
+	@GetMapping(KintaiConstants.SIGNUP_COMPLETION_URL)
+	public String geetSignupCompletion() {
 
-		if (bindingResult.hasErrors()) {
-			return getUpdateWorkTime(model, workTimeId, form);
-		}
-
-		int contractId = monthService.getContractId(workTimeId);
-		Months month = monthService.getMonthOfWorkTime(contractId, form.getWorkDay());
-
-		WorkTimes work = modelMapper.map(form, WorkTimes.class);
-		work.setWorkTimeId(workTimeId);
-		work.setMonthId(month.getMonthId());
-
-		workTimesService.updateWorkTimes(work);
-
-		return KintaiConstants.REDIRECT_HOME;
-
+		return KintaiConstants.SIGNUP_COMPLETION_PASS;
 	}
 
 	@GetMapping(KintaiConstants.CHANGE_EMAIL_URL)
@@ -105,7 +95,7 @@ public class UpdateController {
 		}
 
 		Users loginUser = userService.findOneUser(user.getUserId());
-		loginUser.setEmail(form.getNewEmail());
+		modelMapper.map(form, loginUser);
 
 		userService.updateEmail(loginUser);
 
@@ -130,11 +120,11 @@ public class UpdateController {
 			return getChangePassword(form, model, user);
 		}
 		Users loginUser = userService.findOneUser(user.getUserId());
-		loginUser.setPassword(form.getNewPassword());
+		modelMapper.map(form, loginUser);
+
 		userService.updatePassword(loginUser);
 
 		return KintaiConstants.REDIRECT_HOME;
 
 	}
-
 }

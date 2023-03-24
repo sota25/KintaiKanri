@@ -45,4 +45,11 @@ public interface ContractService {
 	 */
 	public Contracts findCurrentCont(int userId);
 
+	/**
+	 * 
+	 * @param contract
+	 * @return
+	 */
+	public int updateCont(Contracts contract);
+
 }

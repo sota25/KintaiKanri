@@ -35,6 +35,12 @@ public class KintaiConstants {
 	/** パスワード変更画面ページ */
 	public static final String CHANGE_PASSWORD_URL = "/changePassword";
 
+	/** 契約情報変更画面ページ */
+	public static final String CHANGE_CONTRACT_URL = "/changeContract";
+
+	/** 契約終了日更新画面ページ */
+	public static final String UPDATE_END_DATE_URL = "/updateEndDate";
+
 	/** エラー時追加URL */
 	public static final String ERROR_URL = "?error";
 
@@ -100,6 +106,9 @@ public class KintaiConstants {
 	/** 登録完了画面のリダイレクト */
 	public static final String REDIRECT_COMPLETION = "redirect:/signup/completion";
 
+	/** 契約登録画面のリダイレクト */
+	public static final String REDIRECT_CONTRACT = "redirect:/contract";
+
 	/** ホーム画面のリダイレクト */
 	public static final String REDIRECT_HOME = "redirect:/home";
 
@@ -137,6 +146,9 @@ public class KintaiConstants {
 
 	/** contentsキ- */
 	public static final String MODEL_KEY_CONTENTS = "contents";
+
+	/** 契約情報キー */
+	public static final String MODEL_KEY_CONTRACT = "contract";
 
 	/** contractsテーブルIDキー */
 	public static final String MODEL_KEY_CONTRACT_ID = "contractId";
@@ -202,8 +214,14 @@ public class KintaiConstants {
 	/** changePasswordコンテンツ */
 	public static final String MODEL_VAL_CHANGE_PASSWORD = "user/changePassword::changePassword_contents";
 
-	/** contractコンテンツ */
-	public static final String MODEL_VAL_CONTRACT_CONTENTS = "contract/contracts::contracts_contents";
+	/** changeContractコンテンツ */
+	public static final String MODEL_VAL_CHANGE_CONTRACT_CONTENTS = "contract/changeContract::changeContract_contents";
+
+	/** contractsコンテンツ */
+	public static final String MODEL_VAL_CONTRACTS_CONTENTS = "contract/contracts::contracts_contents";
+
+	/** updateEndDateコンテンツ */
+	public static final String MODEL_VAL_UPDARE_END_DATE_CONTENTS = "contract/updateEndDate::updateEndDate_contents";
 
 	/** monthコンテンツ */
 	public static final String MODEL_VAL_MONTH_CONTENTS = "contract/month::month_contents";

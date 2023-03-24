@@ -1,22 +1,15 @@
 package com.example.demo.form;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.example.demo.model.valid.ValidGroup1;
 
 import lombok.Data;
 
-/**
- * 契約登録フォーム
- */
 @Data
-public class ContractForm {
+public class ChangeContractForm {
 
 	/** 契約時間 */
 	@NotNull(groups = ValidGroup1.class)
@@ -33,14 +26,5 @@ public class ContractForm {
 	/** 終業時間 */
 	@NotNull(groups = ValidGroup1.class)
 	private LocalTime endTime;
-
-	/** 契約開始日 */
-	@NotNull(groups = ValidGroup1.class)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate startDate;
-
-	/** 会社名 */
-	@NotBlank(groups = ValidGroup1.class)
-	private String officeName;
 
 }
